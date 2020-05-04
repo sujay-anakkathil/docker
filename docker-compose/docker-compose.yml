@@ -1,0 +1,20 @@
+version: "2"
+services:
+  drupal:
+    image: drupal
+    ports:
+      - "8080:80"
+    volumes:
+      - ./modules:/var/www/html/modules
+      - ./themes:/var/www/html/themes
+      - ./profiles:/var/www/html/profiles    
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=drupal
+      - POSTGRES_USER=user
+
+    
