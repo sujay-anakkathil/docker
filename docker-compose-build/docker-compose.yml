@@ -1,7 +1,10 @@
 version: "2"
 services:
   drupal:
-    image: drupal
+    build:
+      context: .
+      
+    image: custom-drupal
     ports:
       - "8080:80"
     volumes:
@@ -16,8 +19,10 @@ services:
       - POSTGRES_PASSWORD=test
       - POSTGRES_DB=drupal
       - POSTGRES_USER=user
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
 volumes:
   modules:
   themes:
   profiles:
-    
+  drupal-data:  
